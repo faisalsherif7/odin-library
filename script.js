@@ -11,5 +11,5 @@ function Book(title, author, pages, read) {
 }
 
 function addBookToLibrary() {
-    // take user's input and store the new book objects into the array
+    
   }
