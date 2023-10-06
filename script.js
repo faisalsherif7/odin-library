@@ -1,3 +1,5 @@
+const myLibrary = [];
+
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -7,3 +9,7 @@ function Book(title, author, pages, read) {
         return `${title} by ${author}, ${pages} pages, ${read}`
     }
 }
+
+function addBookToLibrary() {
+    // take user's input and store the new book objects into the array
+  }
