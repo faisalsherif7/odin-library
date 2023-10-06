@@ -26,3 +26,12 @@ addEventListener('submit', () => {
     // Get all data from form and pass it on to addbooktolibrary so that it can then add the book
     addBookToLibrary(title, author, pages, read)
 })
+
+
+const booksTable = document.querySelector('.books-table')
+
+function Display() {
+    myLibrary.forEach((book) => {
+        booksTable.textContent += book;
+    })
+}
