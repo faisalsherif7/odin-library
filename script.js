@@ -12,6 +12,9 @@ function Book(title, author, pages, read) {
 
 function addBookToLibrary(title, author, pages, read) {
     // create a new instance of the Book object and add the data obtained from the form as its property values
+    const book = new Book(title, author, pages, read);
+    myLibrary.push(book);
+    return;
   }
 
 const title = document.querySelector('#title')
@@ -20,6 +23,6 @@ const pages = document.querySelector('#pages')
 const read = document.querySelector('#read')
 
 addEventListener('submit', () => {
-    // Get all data and pass it on to addbooktolibrary so that it can then add the book
+    // Get all data from form and pass it on to addbooktolibrary so that it can then add the book
     addBookToLibrary(title, author, pages, read)
 })
