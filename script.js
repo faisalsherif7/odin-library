@@ -5,7 +5,7 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.info() = function () {
+    this.info = function () {
         return `${title} by ${author}, ${pages} pages, ${read}`
     }
 }
@@ -22,9 +22,15 @@ const author = document.querySelector('#author')
 const pages = document.querySelector('#pages')
 const read = document.querySelector('#read')
 
-addEventListener('submit', () => {
+addEventListener('submit', (event) => {
+    
+    // Prevent form from submitting to server
+    event.preventDefault();
+
     // Get all data from form and pass it on to addbooktolibrary so that it can then add the book
     addBookToLibrary(title, author, pages, read)
+
+    console.log(myLibrary);
 })
 
 
