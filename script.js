@@ -13,8 +13,7 @@ function Book(title, author, pages, read) {
 function addBookToLibrary(title, author, pages, read) {
     // create a new instance of the Book object and add the data obtained from the form as its property values
     const book = new Book(title, author, pages, read);
-    myLibrary.push(book);
-    return;
+    return myLibrary.push(book);
   }
 
 const title = document.querySelector('#title')
@@ -28,9 +27,10 @@ addEventListener('submit', (event) => {
     event.preventDefault();
 
     // Get all data from form and pass it on to addbooktolibrary so that it can then add the book
-    addBookToLibrary(title, author, pages, read)
+    addBookToLibrary(title.value, author.value, pages.value, read.value)
 
-    console.log(myLibrary);
+    // Display new books
+    Display();
 })
 
 
@@ -38,6 +38,6 @@ const booksTable = document.querySelector('.books-table')
 
 function Display() {
     myLibrary.forEach((book) => {
-        booksTable.textContent += book;
+        booksTable.textContent += book.info();
     })
 }
