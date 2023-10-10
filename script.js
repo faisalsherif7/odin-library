@@ -30,7 +30,6 @@ form.addEventListener('submit', (event) => {
     let checkedRadio;
     let radioButtons = document.querySelectorAll('input[name="read"]');
     for (button of radioButtons) {
-      console.log(button);
       if (button.checked) {
         checkedRadio = button;
       }
@@ -49,7 +48,12 @@ form.addEventListener('submit', (event) => {
 function Display() {
     const booksTable = document.querySelector('tbody')
     booksTable.textContent = '';
+
+    indexCounter = -1;
+
     myLibrary.forEach((book) => {
+
+        indexCounter += 1;
 
         let newRow = booksTable.insertRow(-1);
     
@@ -64,6 +68,9 @@ function Display() {
 
         let read = newRow.insertCell(3);
         read.textContent += book.read;
+
+        let index = newRow.insertCell(4);
+        index.innerHTML += `<input type="hidden" data="${indexCounter}">`;
     })
 }
 
