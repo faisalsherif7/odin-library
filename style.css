@@ -14,21 +14,29 @@ body {
 
 .header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 0px 30px;
     align-items: center;
     gap: 50px;
     background-color: var(--primary-color);
     color: white;
 }
 
-button {
-    border: 0px;
+.header button {
+    border: 2px solid white;
     border-radius: 20px;
-    padding: 10px;
-    background-color: var(--primary-color);
-    color: white;
+    padding: 10px 20px;
+    background-color: white;
+    color: var(--primary-color);
+    font-size: 18px;
 }
 
 table, tr, td, th {
     border: 1px solid black;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
 }

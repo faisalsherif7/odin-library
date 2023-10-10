@@ -26,7 +26,7 @@ addEventListener('submit', (event) => {
     // Prevent form from submitting to server
     event.preventDefault();
 
-    // Get all data from form and pass it on to addbooktolibrary so that it can then add the book
+    // Get all data from form and pass it on to addBookToLibrary() function so that it can then add the book
     addBookToLibrary(title.value, author.value, pages.value, read.value)
 
     // Display new books
@@ -34,10 +34,23 @@ addEventListener('submit', (event) => {
 })
 
 
-const booksTable = document.querySelector('.books-table')
-
 function Display() {
+    const booksTable = document.querySelector('tbody')
+    booksTable.textContent = '';
     myLibrary.forEach((book) => {
-        booksTable.textContent += book.info();
+
+        let newRow = booksTable.insertRow(-1);
+    
+        let title = newRow.insertCell(0);
+        title.textContent += book.title;
+
+        let author = newRow.insertCell(1);
+        author.textContent += book.author;
+
+        let pages = newRow.insertCell(2);
+        pages.textContent += book.pages;
+
+        let read = newRow.insertCell(3);
+        read.textContent += book.read;
     })
 }
