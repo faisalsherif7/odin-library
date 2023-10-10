@@ -30,7 +30,8 @@ form.addEventListener('submit', (event) => {
     // Get all data from form and pass it on to addBookToLibrary() function so that it can then add the book
     addBookToLibrary(title.value, author.value, pages.value, read.value)
 
-    // Display new books
+    // Close dialog and update table
+    dialog.close();
     Display();
 })
 
