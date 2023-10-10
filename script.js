@@ -19,11 +19,13 @@ function addBookToLibrary(title, author, pages, read) {
 const title = document.querySelector('#title')
 const author = document.querySelector('#author')
 const pages = document.querySelector('#pages')
-const read = document.querySelector('#read')
+const read = document.querySelector('input[name="read"]:checked')
 const form = document.querySelector('form')
 
 form.addEventListener('submit', (event) => {
     
+    console.log(read.value);
+
     // Prevent form from submitting to server
     event.preventDefault();
 
@@ -32,6 +34,7 @@ form.addEventListener('submit', (event) => {
 
     // Close dialog and update table
     dialog.close();
+    form.reset()
     Display();
 })
 
