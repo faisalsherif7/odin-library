@@ -19,18 +19,25 @@ function addBookToLibrary(title, author, pages, read) {
 const title = document.querySelector('#title')
 const author = document.querySelector('#author')
 const pages = document.querySelector('#pages')
-const read = document.querySelector('input[name="read"]:checked')
 const form = document.querySelector('form')
 
 form.addEventListener('submit', (event) => {
     
-    console.log(read.value);
-
     // Prevent form from submitting to server
     event.preventDefault();
 
-    // Get all data from form and pass it on to addBookToLibrary() function so that it can then add the book
-    addBookToLibrary(title.value, author.value, pages.value, read.value)
+    // Access checked radio button 
+    let checkedRadio;
+    let radioButtons = document.querySelectorAll('input[name="read"]');
+    for (button of radioButtons) {
+      console.log(button);
+      if (button.checked) {
+        checkedRadio = button;
+      }
+    }
+
+    // Pass on values from the form to the function that adds it to the array
+    addBookToLibrary(title.value, author.value, pages.value, checkedRadio.value)
 
     // Close dialog and update table
     dialog.close();
