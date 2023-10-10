@@ -20,8 +20,9 @@ const title = document.querySelector('#title')
 const author = document.querySelector('#author')
 const pages = document.querySelector('#pages')
 const read = document.querySelector('#read')
+const form = document.querySelector('form')
 
-addEventListener('submit', (event) => {
+form.addEventListener('submit', (event) => {
     
     // Prevent form from submitting to server
     event.preventDefault();
@@ -54,3 +55,17 @@ function Display() {
         read.textContent += book.read;
     })
 }
+
+const dialog = document.querySelector("dialog");
+const showButton = document.querySelector(".header button");
+const closeButton = document.querySelector(".close");
+
+// Open dialog
+showButton.addEventListener("click", () => {
+  dialog.showModal();
+});
+
+// Close dialog
+closeButton.addEventListener("click", () => {
+  dialog.close();
+});
