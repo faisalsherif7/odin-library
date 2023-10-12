@@ -72,8 +72,23 @@ function Display() {
         let index = newRow.insertCell(4);
         index.innerHTML += `<button type="button" class="delete-entry" value="${indexCounter}"> Delete Book </button>`
         index.innerHTML += `<button type="button" class="change-read-status" value="${indexCounter}"> Change Read Status </button>`
+
+        // Create event listener for delete button to delete entry
+        const deleteButton = document.querySelector(`button[value="${indexCounter}"][class="delete-entry"]`)
+        deleteButton.addEventListener('click', function () {
+          deleteEntry(deleteButton);
+        })
     })
 }
+
+// Function to delete entry
+function deleteEntry(button) {
+  let index = button.value;
+  myLibrary.splice(index, 1);
+  console.log(index);
+  Display();
+}
+
 
 const dialog = document.querySelector("dialog");
 const showButton = document.querySelector(".header button");
@@ -88,3 +103,5 @@ showButton.addEventListener("click", () => {
 closeButton.addEventListener("click", () => {
   dialog.close();
 });
+
+
