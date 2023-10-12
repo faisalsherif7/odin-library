@@ -10,6 +10,14 @@ function Book(title, author, pages, read) {
     }
 }
 
+Book.prototype.toggleStatus = function() {
+  if (this.read === "Read") {
+    this.read = "Unread";
+  } else if (this.read === "Unread") {
+    this.read = "Read";
+  }
+}
+
 function addBookToLibrary(title, author, pages, read) {
     // create a new instance of the Book object and add the data obtained from the form as its property values
     const book = new Book(title, author, pages, read);
@@ -73,7 +81,7 @@ function Display() {
         index.innerHTML += `<button type="button" class="delete-entry" value="${indexCounter}"> Delete Book </button>`
         index.innerHTML += `<button type="button" class="change-read-status" value="${indexCounter}"> Change Read Status </button>`
 
-        // Create event listener for delete button to delete entry
+        // Create event listener for delete button
         const deleteButton = document.querySelector(`button[value="${indexCounter}"][class="delete-entry"]`)
         deleteButton.addEventListener('click', function () {
           deleteEntry(deleteButton);
@@ -82,7 +90,7 @@ function Display() {
         // Create event listener for button that changes read status
         const statusButton = document.querySelector(`button[value="${indexCounter}"][class="change-read-status"]`)
         statusButton.addEventListener('click', function () {
-          changeStatus(statusButton);
+          changeStatus(book);
         })
     })
 }
@@ -95,9 +103,10 @@ function deleteEntry(button) {
   Display();
 }
 
-function changeStatus(button) {
-  let index = button.value;
-  console.log(index);
+// Function to toggle toggleStatus() function of passed-in book object
+function changeStatus(book) {
+  book.toggleStatus();
+  Display();
 }
 
 
@@ -116,3 +125,4 @@ closeButton.addEventListener("click", () => {
 });
 
 
+ 
