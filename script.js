@@ -70,7 +70,8 @@ function Display() {
         read.textContent += book.read;
 
         let index = newRow.insertCell(4);
-        index.innerHTML += `<input type="hidden" data="${indexCounter}">`;
+        index.innerHTML += `<button type="button" class="delete-entry" value="${indexCounter}"> Delete Book </button>`
+        index.innerHTML += `<button type="button" class="change-read-status" value="${indexCounter}"> Change Read Status </button>`
     })
 }
 
