@@ -53,46 +53,64 @@ form.addEventListener('submit', (event) => {
 })
 
 
+let table;
 function Display() {
-    const booksTable = document.querySelector('tbody')
-    booksTable.textContent = '';
 
-    indexCounter = -1;
+  const tableContainer = document.querySelector('.table-container');
 
-    myLibrary.forEach((book) => {
+  if (myLibrary.length === 0) {
+    table = tableContainer.innerHTML;
+    tableContainer.innerHTML = 
+                                `<div class="no-books">
+                                  <p>No books to show</p>
+                                </div>`;
+    return
+  } else {
+    if (tableContainer.innerHTML = "No books to show") {
+      tableContainer.innerHTML = table;
+      console.log(table)
+    }
+  }
 
-        indexCounter += 1;
+  const booksTable = document.querySelector('tbody')
+  booksTable.textContent = '';
 
-        let newRow = booksTable.insertRow(-1);
-    
-        let title = newRow.insertCell(0);
-        title.textContent += book.title;
+  indexCounter = -1;
 
-        let author = newRow.insertCell(1);
-        author.textContent += book.author;
+  myLibrary.forEach((book) => {
 
-        let pages = newRow.insertCell(2);
-        pages.textContent += book.pages;
+      indexCounter += 1;
 
-        let read = newRow.insertCell(3);
-        read.textContent += book.read;
+      let newRow = booksTable.insertRow(-1);
+  
+      let title = newRow.insertCell(0);
+      title.textContent += book.title;
 
-        let index = newRow.insertCell(4);
-        index.innerHTML += `<button type="button" class="delete-entry" value="${indexCounter}"> Delete Book </button>`
-        index.innerHTML += `<button type="button" class="change-read-status" value="${indexCounter}"> Change Read Status </button>`
+      let author = newRow.insertCell(1);
+      author.textContent += book.author;
 
-        // Create event listener for delete button
-        const deleteButton = document.querySelector(`button[value="${indexCounter}"][class="delete-entry"]`)
-        deleteButton.addEventListener('click', function () {
-          deleteEntry(deleteButton);
-        })
+      let pages = newRow.insertCell(2);
+      pages.textContent += book.pages;
 
-        // Create event listener for button that changes read status
-        const statusButton = document.querySelector(`button[value="${indexCounter}"][class="change-read-status"]`)
-        statusButton.addEventListener('click', function () {
-          changeStatus(book);
-        })
-    })
+      let read = newRow.insertCell(3);
+      read.textContent += book.read;
+
+      let index = newRow.insertCell(4);
+      index.innerHTML += `<button type="button" class="delete-entry" value="${indexCounter}"> Delete Book </button>`
+      index.innerHTML += `<button type="button" class="change-read-status" value="${indexCounter}"> Change Read Status </button>`
+
+      // Create event listener for delete button
+      const deleteButton = document.querySelector(`button[value="${indexCounter}"][class="delete-entry"]`)
+      deleteButton.addEventListener('click', function () {
+        deleteEntry(deleteButton);
+      })
+
+      // Create event listener for button that changes read status
+      const statusButton = document.querySelector(`button[value="${indexCounter}"][class="change-read-status"]`)
+      statusButton.addEventListener('click', function () {
+        changeStatus(book);
+      })
+  })
 }
 
 // Function to delete entry
@@ -125,4 +143,4 @@ closeButton.addEventListener("click", () => {
 });
 
 
- 
+Display();
