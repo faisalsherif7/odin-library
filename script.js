@@ -78,6 +78,12 @@ function Display() {
         deleteButton.addEventListener('click', function () {
           deleteEntry(deleteButton);
         })
+
+        // Create event listener for button that changes read status
+        const statusButton = document.querySelector(`button[value="${indexCounter}"][class="change-read-status"]`)
+        statusButton.addEventListener('click', function () {
+          changeStatus(statusButton);
+        })
     })
 }
 
@@ -87,6 +93,11 @@ function deleteEntry(button) {
   myLibrary.splice(index, 1);
   console.log(index);
   Display();
+}
+
+function changeStatus(button) {
+  let index = button.value;
+  console.log(index);
 }
 
 
