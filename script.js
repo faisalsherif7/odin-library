@@ -19,19 +19,13 @@ Book.prototype.toggleStatus = function() {
 }
 
 
-
-const book1 = new Book("title", "author", "pages", "Read");
-myLibrary.push(book1);
-
-
-
-
 function addBookToLibrary(title, author, pages, read) {
     // create a new instance of the Book object and add the data obtained from the form as its property values
     const book = new Book(title, author, pages, read);
     return myLibrary.push(book);
   }
 
+  
 const title = document.querySelector('#title')
 const author = document.querySelector('#author')
 const pages = document.querySelector('#pages')
