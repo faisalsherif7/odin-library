@@ -18,6 +18,14 @@ Book.prototype.toggleStatus = function() {
   }
 }
 
+
+
+const book1 = new Book("title", "author", "pages", "Read");
+myLibrary.push(book1);
+
+
+
+
 function addBookToLibrary(title, author, pages, read) {
     // create a new instance of the Book object and add the data obtained from the form as its property values
     const book = new Book(title, author, pages, read);
@@ -53,13 +61,12 @@ form.addEventListener('submit', (event) => {
 })
 
 
+const tableContainer = document.querySelector('.table-container');
 let table;
+table = tableContainer.innerHTML;
 function Display() {
 
-  const tableContainer = document.querySelector('.table-container');
-
   if (myLibrary.length === 0) {
-    table = tableContainer.innerHTML;
     tableContainer.innerHTML = 
                                 `<div class="no-books">
                                   <p>No books to show</p>
@@ -96,8 +103,12 @@ function Display() {
       read.textContent += book.read;
 
       let index = newRow.insertCell(4);
-      index.innerHTML += `<button type="button" class="delete-entry" value="${indexCounter}"> Delete Book </button>`
-      index.innerHTML += `<button type="button" class="change-read-status" value="${indexCounter}"> Change Read Status </button>`
+      index.innerHTML += `
+      <div class="table-buttons">
+      <button type="button" class="change-read-status" value="${indexCounter}"> Change Read Status</button> 
+      <button type="button" class="delete-entry" value="${indexCounter}">Delete Book</button>
+      <div class="table-buttons">
+      `;
 
       // Create event listener for delete button
       const deleteButton = document.querySelector(`button[value="${indexCounter}"][class="delete-entry"]`)

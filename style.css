@@ -3,7 +3,7 @@
 :root {
     --primary-color: #164e63;
     --secondary-color: #ecfeff;
-    --tertiary-color: #ccfbf1;
+    --tertiary-color: #155e75;
 }
 
 button:hover {
@@ -48,6 +48,12 @@ table {
 
 th, td {
     padding: 10px 30px;
+}
+
+td {
+    max-width: 25ch;
+    text-wrap: balance;
+    overflow-wrap: anywhere;
 }
 
 thead {
@@ -99,4 +105,18 @@ form button {
     color: white;
     background-color: var(--primary-color);
     font-weight: bold;
+}
+
+.table-buttons {
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
+}
+
+table button {
+    padding: 10px 10px;
+    border: 0px;
+    border-radius: 10px;
+    color: white;
+    background-color: var(--tertiary-color);
 }
